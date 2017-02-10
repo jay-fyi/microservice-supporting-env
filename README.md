@@ -13,6 +13,7 @@ What things you need to install the software and how to install them
 1. JAVA JDK
 2. Intellij
 3. Maven
+4. Rabbit MQ
 
 
 ### Installing
@@ -21,13 +22,41 @@ A step by step series of examples that tell you have to get a development env ru
 
 TODO:
 
-### Running the project
+### Running the project the first time
 
 1. Checkout the project into your local machine
-2. Run config-server service
+2. Run a Rabbit MQ Broker (This is used by the Config Server and all service clients, which using the Spring Cloud Bus to dynamically update config data)
+    - Download [Rabbit MQ](https://www.rabbitmq.com/download.html).
+    - Run Rabbit MQ
+       ```
+       e.g. >sudo rabbitmq-server start
+       ```
+    - Check is the MQ running
+       ```
+       e.g. >sudo rabbitmqctl status
+       ```
+3. (OPTIONAL) Enable [Rabbit MQ Management Plugin](https://www.rabbitmq.com/management.html)
+    - Enable the plugin
+      ```
+       e.g. >sudo rabbitmq-plugins enable rabbitmq_management
+       ```
+    - Check is the Management Plugin working by open the URL http://localhost:15672/
+      - default username: guest
+      - default password: guest
+4. Run config-server service. More details about [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html)
+   - Either run on Intellj directly or using Maven or executable jar
+        - Using Maven
+        ```
+        e.g. {PROJECT_DIR}/config-server/>mvn spring-boot:run
+        ```
+        - Using executable jar - deploy to your target directory
+        ```
+        e.g. >java -jar {PROJECT_DIR}/target/config-server-{VERSION}.jar
+        ```
+
    - Check is the config server working by open the URL http://localhost:8001/application/default. You should be able to see a Json format data
-3. Run discovery-server
-   - Run the script on commandline /run-all.sh which will run 3 instances of Eureka
+5. Run discovery-server
+   - Run the script in command-line /run-all.sh which will run 3 instances of Eureka
    - Check is the Eureka working by open the URL http://localhost:8011/. You should be able to see a Spring Eureka page with system status
  
 
