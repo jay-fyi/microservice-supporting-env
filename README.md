@@ -56,6 +56,12 @@ TODO:
 
    - Check is the config server working by open the URL http://localhost:8001/application/default. You should be able to see a Json format data
 5. Run discovery-server
+   - Edit hosts file and add those entries at the end of the file. (e.g. /etc/hosts)
+        ```
+        127.0.0.1       eureka-primary
+        127.0.0.1       eureka-secondary
+        127.0.0.1       eureka-tertiary
+        ```
    - Run the script in command-line /run-all.sh which will run 3 instances of Eureka
    - Check is the Eureka working by open the URL http://localhost:8011/. You should be able to see a Spring Eureka page with system status
  
@@ -83,7 +89,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Jason Yu** - *Initial work* - [Jay-fyi](https://github.com/jay-fyi)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/jay-fyi/microservice-supporting-env/contributors) who participated in this project.
 
 ## License
 
