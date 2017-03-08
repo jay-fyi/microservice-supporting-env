@@ -10,3 +10,6 @@ spring:
             searchLocations: classpath:offline-repository/
 server:
   port: 8001
+# Output the log for logStash - TODO: standardized the output location via config server?
+logging:
+  file: /var/log/filebeat/config-server.log

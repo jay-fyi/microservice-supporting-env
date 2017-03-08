@@ -2,7 +2,7 @@ output:
   logstash:
     enabled: true
     hosts:
-      - elk:5044
+      - localhost:5044
     timeout: 15
     ssl:
       certificate_authorities:
@@ -19,3 +19,7 @@ filebeat:
       paths:
         - "/var/log/nginx/*.log"
       document_type: nginx-access
+    -
+      paths:
+        - "/var/log/filebeat/*.log"
+      document_type: config-server-log
